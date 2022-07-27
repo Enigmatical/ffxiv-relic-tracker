@@ -7,11 +7,17 @@
 // 'src/pages/HomePage/HomePage.js'         -> HomePage
 // 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
 
-import { Router, Route } from '@redwoodjs/router'
+import { Router, Route, Set } from '@redwoodjs/router'
+
+import TrackerLayout from 'src/layouts/TrackerLayout/TrackerLayout'
 
 const Routes = () => {
   return (
     <Router>
+      <Set wrap={[TrackerLayout]}>
+        <Route path="/" page={JobsPage} name="index" />
+        <Route path="/jobs/{jobId:Int}/relics" page={RelicsPage} name="relics" />
+      </Set>
       <Route notfound page={NotFoundPage} />
     </Router>
   )
